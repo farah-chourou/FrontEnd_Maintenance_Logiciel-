@@ -1,0 +1,16 @@
+{
+  "root": true,
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": ["plugin:react-hooks/recommended"],
+  "parserOptions": {
+    "ecmaVersion": 8,
+    "requireConfigFile": false,
+    "ecmaFeatures": {
+      "experimentalObjectRestSpread": true,
+      "impliedStrict": true
+    }
+  }
+}
