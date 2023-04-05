@@ -12,6 +12,7 @@ import CustomToaster from "./custom/Toast/CustomToaster";
 import authService from "./services/authService";
 import Loading from "./layouts/loading/Loading";
 import { UserContext } from "./store/Contexts";
+import "./pages/StyleMain.css";
 
 // ----------------------------------------------------------------------
 

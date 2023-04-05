@@ -1,0 +1,16 @@
+.p {
+  color: rgba(75, 75, 75, 0.233);
+}
+
+.bold-header {
+  font-weight: bold;
+}
+
+.container {
+  border: 1px solid #e2e2e2;
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px #b9b9b99c;
+  background-color: #ffffff;
+  padding: 3%;
+  min-height: 550px;
+}

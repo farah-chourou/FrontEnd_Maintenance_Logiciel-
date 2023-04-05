@@ -17,7 +17,7 @@ import {
 
 export default function DashboardPage() {
   return (
-    <Container>
+    <Container className="container">
       <Helmet>
         <title> Dashboard </title>
       </Helmet>

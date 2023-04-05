@@ -8,7 +8,9 @@ import ForgetPasswordPage from "../pages/Auth/ForgetPasswordPage";
 
 import Page404 from "../pages/ErorPages/Page404";
 import ProfilePage from "../pages/ProfilePage";
-import DashboardPage from "../pages/DashboardPage";
+import DashboardPage from "../pages/Dashboard/DashboardPage";
+import GestionDeveloppeur from "../pages/GestionDeveloppeur/GestionDeveloppeur";
+import Application from "../pages/Application/Application";
 
 // ----------------------------------------------------------------------
 
@@ -25,9 +27,9 @@ export default function Router() {
           element: <DashboardPage />,
         },
         { path: "profile", element: <ProfilePage /> },
-        { path: "application", element: <ProfilePage /> },
+        { path: "application", element: <Application /> },
         { path: "suivi_avancement", element: <ProfilePage /> },
-        { path: "gestion_developpeurs", element: <ProfilePage /> },
+        { path: "gestion_developpeurs", element: <GestionDeveloppeur /> },
         { path: "base_connaissances", element: <ProfilePage /> },
       ],
     },

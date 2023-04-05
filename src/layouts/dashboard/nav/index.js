@@ -141,10 +141,12 @@ export default function Nav({ openNav, onCloseNav }) {
         sx={{
           px: 2.5,
           py: 3,
+          display: "flex",
+          justifyContent: "center",
         }}
       >
         <Link sx={{ display: "contents" }}>
-          <img src={L} alt="Logo" height={50} />
+          <img src={L} alt="Logo" height={150} />
         </Link>
       </Box>
 
