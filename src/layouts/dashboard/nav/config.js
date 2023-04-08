@@ -27,23 +27,9 @@ const navConfig = [
   },
 
   {
-    title: "Profile",
-    path: "/app/profile",
-    icon: <Person2Icon />,
-    role: roles.ALL,
-  },
-
-  {
-    title: "Application ",
+    title: "Gestion Des Projets ",
     path: "/app/application",
     icon: icon("ic_user"),
-    role: roles.ADMIN,
-  },
-
-  {
-    title: "Suivi Avancement",
-    path: "/app/suivi_avancement",
-    icon: <EventAvailableIcon />,
     role: roles.ADMIN,
   },
   {
@@ -53,21 +39,36 @@ const navConfig = [
     role: roles.ADMIN,
   },
   {
+    title: "Suivi Avancement",
+    path: "/app/suivi_avancement",
+    icon: <EventAvailableIcon />,
+    role: roles.ADMIN,
+  },
+
+  {
     title: "Taches",
     path: "/app/taches",
     icon: <AssignmentIcon />,
     role: roles.DEVELOPER,
   },
   {
+    /*
     title: "Saisir Tache",
     path: "/app/saisir_tache",
     icon: <BorderColorIcon />,
     role: roles.DEVELOPER,
+*/
   },
   {
     title: "Base de connaissances",
     path: "/app/base_connaissances",
     icon: <ManageHistoryIcon />,
+    role: roles.ALL,
+  },
+  {
+    title: "Profile",
+    path: "/app/profile",
+    icon: <Person2Icon />,
     role: roles.ALL,
   },
 ];

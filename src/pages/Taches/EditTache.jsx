@@ -52,10 +52,9 @@ function EditTache({ popup, handleClose, handleEditTask }) {
         <DialogContent dividers>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={12}>
+              Date de cloture
               <TextField
                 fullWidth
-                label="Date de cloture"
-                required
                 name="dateCloture"
                 type="date"
                 variant="filled"

@@ -16,6 +16,8 @@ import {
   TableContainer,
   TableHead,
 } from "@mui/material";
+import InsertDriveFileIcon from "@mui/icons-material/InsertDriveFile";
+
 import EditIcon from "@mui/icons-material/Edit";
 import FilePresentIcon from "@mui/icons-material/FilePresent";
 import { Buffer } from "buffer";
@@ -174,14 +176,16 @@ function Taches() {
                 <TableCell>{item.idProjet.nom}</TableCell>
                 <TableCell>{item.idDeveloper.nom}</TableCell>
                 <TableCell>
-                  {item.documentation?.contenu ? (
-                    <a
-                      href={item.documentation.contenu}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      Download
-                    </a>
+                  {item.documentation ? (
+                    <IconButton aria-label="delete">
+                      <a
+                        href={item.documentation.contenu}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        <InsertDriveFileIcon />
+                      </a>
+                    </IconButton>
                   ) : (
                     <span className="neant">Néant </span>
                   )}

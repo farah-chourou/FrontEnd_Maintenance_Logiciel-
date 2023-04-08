@@ -41,6 +41,8 @@ export default function AccountPopover() {
   };
   const { setUser, user } = useContext(UserContext);
   const logOut = () => {
+    localStorage.removeItem("token");
+
     navigate("/login");
   };
   return (

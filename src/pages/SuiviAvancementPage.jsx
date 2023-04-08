@@ -16,6 +16,8 @@ import {
   TableContainer,
   TableHead,
 } from "@mui/material";
+import InsertDriveFileIcon from "@mui/icons-material/InsertDriveFile";
+
 import TaskService from "../services/tacheService";
 import Avatar from "../components/Avatar/Avatar";
 import { fDate } from "../utils/formatTime";
@@ -53,17 +55,17 @@ function SuiviAvancementPage() {
               <TableCell>
                 <b> #</b>
               </TableCell>
-              <TableCell padding="none">
+              <TableCell>
                 <b>Titre </b>
               </TableCell>
 
-              <TableCell>
+              <TableCell padding="none">
                 <b> Type</b>
               </TableCell>
               <TableCell padding="none">
                 <b>Date d'affectation </b>
               </TableCell>
-              <TableCell>
+              <TableCell padding="none">
                 {" "}
                 <b> Date de Cloture</b>{" "}
               </TableCell>
@@ -88,11 +90,11 @@ function SuiviAvancementPage() {
           <TableBody>
             {Tasks.map((item, index) => (
               <TableRow key={item._id}>
-                <TableCell>
+                <TableCell padding="none">
                   <Avatar name={`${item.nom} ${item.prenom} `} />
                 </TableCell>
-                <TableCell padding="none">{item.nom}</TableCell>
-                <TableCell>{item.type}</TableCell>
+                <TableCell>{item.nom}</TableCell>
+                <TableCell padding="none">{item.type}</TableCell>
                 <TableCell padding="none">
                   {item.dateAffectation ? (
                     fDate(item.dateAffectation)
@@ -121,11 +123,19 @@ function SuiviAvancementPage() {
                     <span className=""> {item.etat} </span>
                   )}
                 </TableCell>
-                <TableCell>{item.idProjet.nom}</TableCell>
-                <TableCell>{item.idDeveloper.nom}</TableCell>
+                <TableCell>{item.idProjet?.nom}</TableCell>
+                <TableCell>{item.idDeveloper?.nom}</TableCell>
                 <TableCell>
                   {item.documentation ? (
-                    "pdf "
+                    <IconButton aria-label="delete">
+                      <a
+                        href={item.documentation.contenu}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        <InsertDriveFileIcon />
+                      </a>
+                    </IconButton>
                   ) : (
                     <span className="neant">Néant </span>
                   )}

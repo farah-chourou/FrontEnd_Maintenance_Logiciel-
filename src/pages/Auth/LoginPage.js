@@ -151,8 +151,8 @@ export default function LoginPage() {
               Connexion
             </LoadingButton>{" "}
           </form>
-          Chef de Projet mail : arij@gmail.com / mot de passe : 123
-          <br /> Devloppeur mail : farah@gmail.com / mot de passe : gxaQhMKy6wb*
+          Chef de Projet mail : arij@gmail.com / mot de passe : 12345678
+          <br /> Devloppeur mail : farah@gmail.com / mot de passe : CTMv1HPvqtMa
         </Container>
       </div>
     </div>

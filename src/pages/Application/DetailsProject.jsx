@@ -17,6 +17,7 @@ import {
 } from "@mui/material";
 
 import Breadcrumbs from "@mui/material/Breadcrumbs";
+import InsertDriveFileIcon from "@mui/icons-material/InsertDriveFile";
 
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -99,7 +100,14 @@ function DetailsProject() {
     getProject();
     getTasks();
   }, []);
-
+  const handleDownload = (url) => {
+    const link = document.createElement("a");
+    link.href = url;
+    link.setAttribute("download", "");
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
   return (
     <Container className="container">
       <Breadcrumbs separator="›" aria-label="breadcrumb" mb={2}>
@@ -133,27 +141,30 @@ function DetailsProject() {
         <Table sx={{ minWidth: 500 }}>
           <TableHead>
             <TableRow hover>
-              <TableCell>
+              <TableCell padding="none">
                 <b> #</b>
               </TableCell>
-              <TableCell>
+              <TableCell padding="none">
                 <b>Nom </b>
               </TableCell>
-              <TableCell>
+              <TableCell padding="none">
                 <b> Type</b>
               </TableCell>
-              <TableCell>
+              <TableCell padding="none">
                 <b> Date d'affectation</b>
               </TableCell>
-              <TableCell>
+              <TableCell padding="none">
                 <b> Date de cloture</b>
               </TableCell>
 
-              <TableCell>
+              <TableCell padding="none">
                 <b> Etat</b>
               </TableCell>
-              <TableCell>
+              <TableCell padding="none">
                 <b> Developpeur</b>
+              </TableCell>
+              <TableCell padding="none">
+                <b> Document</b>
               </TableCell>
               <TableCell>
                 {" "}
@@ -165,14 +176,16 @@ function DetailsProject() {
             {Tasks.map((item) => (
               <TableRow key={item._id} hover>
                 {console.log(item)}
-                <TableCell>
+                <TableCell padding="none">
                   <Avatar name={`${item.nom} ${item.prenom} `} />
                 </TableCell>
-                <TableCell>{item.nom}</TableCell>
-                <TableCell>{item.type}</TableCell>
-                <TableCell>{fDate(item.dateAffectation)}</TableCell>
-                <TableCell>{fDate(item.dateCloture)}</TableCell>
-                <TableCell>
+                <TableCell padding="none">{item.nom}</TableCell>
+                <TableCell padding="none">{item.type}</TableCell>
+                <TableCell padding="none">
+                  {fDate(item.dateAffectation)}
+                </TableCell>
+                <TableCell padding="none">{fDate(item.dateCloture)}</TableCell>
+                <TableCell padding="none">
                   {" "}
                   {item.etat === "En Cours" ? (
                     <span className="etatEnCours"> {item.etat} </span>
@@ -186,8 +199,22 @@ function DetailsProject() {
                     <span className=""> {item.etat} </span>
                   )}
                 </TableCell>
-                <TableCell>{item.idDeveloper?.nom}</TableCell>
-
+                <TableCell padding="none">{item.idDeveloper?.nom}</TableCell>
+                <TableCell>
+                  {item.documentation ? (
+                    <IconButton aria-label="delete">
+                      <a
+                        href={item.documentation.contenu}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        <InsertDriveFileIcon />
+                      </a>
+                    </IconButton>
+                  ) : (
+                    <span className="neant">Néant </span>
+                  )}
+                </TableCell>
                 <TableCell>
                   <IconButton onClick={() => openDelete(item)}>
                     <DeleteIcon />
