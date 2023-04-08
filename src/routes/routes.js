@@ -11,6 +11,11 @@ import ProfilePage from "../pages/ProfilePage";
 import DashboardPage from "../pages/Dashboard/DashboardPage";
 import GestionDeveloppeur from "../pages/GestionDeveloppeur/GestionDeveloppeur";
 import Application from "../pages/Application/Application";
+import DetailsProject from "../pages/Application/DetailsProject";
+import SuiviAvancementPage from "../pages/SuiviAvancementPage";
+import HistoriquePage from "../pages/HistoriquePage";
+import Taches from "../pages/Taches/Taches";
+import SaisirTache from "../pages/SaisirTache/SaisirTache";
 
 // ----------------------------------------------------------------------
 
@@ -28,9 +33,14 @@ export default function Router() {
         },
         { path: "profile", element: <ProfilePage /> },
         { path: "application", element: <Application /> },
-        { path: "suivi_avancement", element: <ProfilePage /> },
+        { path: "application/details/:_id", element: <DetailsProject /> },
+
+        { path: "suivi_avancement", element: <SuiviAvancementPage /> },
         { path: "gestion_developpeurs", element: <GestionDeveloppeur /> },
-        { path: "base_connaissances", element: <ProfilePage /> },
+        { path: "base_connaissances", element: <HistoriquePage /> },
+
+        { path: "taches", element: <Taches /> },
+        { path: "saisir_tache", element: <SaisirTache /> },
       ],
     },
     {

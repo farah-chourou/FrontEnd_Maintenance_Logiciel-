@@ -1,5 +1,7 @@
 import { Helmet } from "react-helmet-async";
 import { useState, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+
 // @mui
 import {
   Typography,
@@ -15,6 +17,7 @@ import {
   TableContainer,
   TableHead,
 } from "@mui/material";
+import VisibilityIcon from "@mui/icons-material/Visibility";
 
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -26,6 +29,7 @@ import ModalDelete from "./Modals/ModalDelete";
 import ModalEditProject from "./Modals/ModalEditProject";
 
 function Application() {
+  const navigate = useNavigate();
   const [Projects, setProjects] = useState([]);
   const [popup, setPopup] = useState({
     open: false,
@@ -38,10 +42,6 @@ function Application() {
 
   const openUpdate = (row) => {
     setPopup({ open: true, type: "update", value: row });
-  };
-
-  const openShow = (row) => {
-    setPopup({ open: true, type: "show", value: row });
   };
 
   const openDelete = (row) => {
@@ -77,6 +77,11 @@ function Application() {
       })
       .catch((error) => console.log(error));
   }, []);
+
+  const handleNavigateDetail = (_id) => {
+    console.log(_id);
+    navigate(`/app/application/details/${_id}`);
+  };
 
   return (
     <Container className="container">
@@ -115,7 +120,9 @@ function Application() {
               <TableCell>
                 <b> Description</b>
               </TableCell>
-
+              <TableCell>
+                <b> Etat</b>
+              </TableCell>
               <TableCell>
                 {" "}
                 <b> Autre </b>{" "}
@@ -124,12 +131,13 @@ function Application() {
           </TableHead>
           <TableBody>
             {Projects.map((item) => (
-              <TableRow key={item._id}>
+              <TableRow key={item._id} hover>
                 <TableCell>
                   <Avatar name={`${item.nom} ${item.prenom} `} />
                 </TableCell>
                 <TableCell>{item.nom}</TableCell>
                 <TableCell>{item.description}</TableCell>
+                <TableCell>{item.etat}</TableCell>
 
                 <TableCell>
                   <IconButton onClick={() => openDelete(item)}>
@@ -137,6 +145,9 @@ function Application() {
                   </IconButton>
                   <IconButton onClick={() => openUpdate(item)}>
                     <EditIcon />
+                  </IconButton>
+                  <IconButton onClick={() => handleNavigateDetail(item._id)}>
+                    <VisibilityIcon />
                   </IconButton>
                 </TableCell>
               </TableRow>

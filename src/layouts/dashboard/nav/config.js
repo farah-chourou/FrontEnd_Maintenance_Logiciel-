@@ -4,7 +4,8 @@ import ManageHistoryIcon from "@mui/icons-material/ManageHistory";
 import ExposureIcon from "@mui/icons-material/Exposure";
 import GroupIcon from "@mui/icons-material/Group";
 import EventAvailableIcon from "@mui/icons-material/EventAvailable";
-// component
+import AssignmentIcon from "@mui/icons-material/Assignment";
+import BorderColorIcon from "@mui/icons-material/BorderColor"; // component
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import SvgColor from "../../../components/svg-color";
 import { roles } from "../../../custom/roles";
@@ -51,7 +52,18 @@ const navConfig = [
     icon: <GroupIcon />,
     role: roles.ADMIN,
   },
-
+  {
+    title: "Taches",
+    path: "/app/taches",
+    icon: <AssignmentIcon />,
+    role: roles.DEVELOPER,
+  },
+  {
+    title: "Saisir Tache",
+    path: "/app/saisir_tache",
+    icon: <BorderColorIcon />,
+    role: roles.DEVELOPER,
+  },
   {
     title: "Base de connaissances",
     path: "/app/base_connaissances",

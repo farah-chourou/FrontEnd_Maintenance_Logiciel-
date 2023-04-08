@@ -17,7 +17,7 @@ customAxios.interceptors.request.use(
   (error) => Promise.reject(error)
 );
 
-/*customAxios.interceptors.response.use(
+/* customAxios.interceptors.response.use(
   (response) => response,
   async (error) => {
     const originalRequest = error.config;
@@ -38,6 +38,6 @@ customAxios.interceptors.request.use(
     }
     return Promise.reject(error);
   }
-);*/
+); */
 
 export default customAxios;

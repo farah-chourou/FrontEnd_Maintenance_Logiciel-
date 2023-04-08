@@ -6,35 +6,30 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogActions from "@mui/material/DialogActions";
 import Button from "@mui/material/Button";
 import DialogTitle from "@mui/material/DialogTitle";
+import TacheService from "../../services/tacheService";
+import Toastfunction from "../../utils/ToastFunction";
+import userService from "../../services/userService";
+import { fDateInverse } from "../../utils/formatTime";
 
-import projetService from "../../../services/projetService";
-import Toastfunction from "../../../utils/ToastFunction";
-
-const type = ["En Cours", "Terminer"];
-
-function ModalEditProject({ popup, handleClose, handleEditProject }) {
-  const { open, value } = popup;
-  const [Project, setProject] = useState({
-    nom: "",
-    prenom: "",
-    tel: "",
-    spec: "",
+const etat = ["En Cours", "Réaliser", "A faire"];
+function EditTache({ popup, handleClose, handleEditTask }) {
+  const { open, value, idProject } = popup;
+  const [Task, setTask] = useState({
+    dateCloture: new Date(),
     etat: "",
   });
 
   const handleChange = (e) => {
-    setProject({ ...Project, [e.target.name]: e.target.value });
+    setTask({ ...Task, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(Project);
-    projetService
-      .updateProject(value._id, Project)
+    console.log(Task);
+    TacheService.updateTaskEtat(value._id, Task)
       .then((response) => {
-        console.log(response);
-        Toastfunction.TaostSuccess("Projet Modifier avec Succès.");
-        handleEditProject(value._id, Project);
+        Toastfunction.TaostSuccess("Tache modifier avec Succès.");
+        handleEditTask(value._id, Task);
         handleClose();
       })
       .catch((error) => {
@@ -43,59 +38,45 @@ function ModalEditProject({ popup, handleClose, handleEditProject }) {
   };
 
   useEffect(() => {
-    setProject({
-      nom: value.nom,
-      description: value.description,
+    console.log(idProject);
+    setTask({
+      dateCloture: value.dateCloture,
       etat: value.etat,
     });
   }, []);
+
   return (
     <Dialog open={open} handleClose={handleClose}>
-      <DialogTitle>{"Modifier Projet  "}</DialogTitle>
-
+      <DialogTitle>{"Modifier tache "}</DialogTitle>
       <form onSubmit={(e) => handleSubmit(e)}>
         <DialogContent dividers>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={12}>
               <TextField
                 fullWidth
-                label="Titre de Projet"
+                label="Date de cloture"
                 required
-                name="nom"
+                name="dateCloture"
+                type="date"
                 variant="filled"
                 size="small"
                 onChange={handleChange}
-                value={Project.nom}
+                value={Task.dateCloture}
               />
             </Grid>
             <Grid item xs={12} sm={12}>
               <TextField
                 fullWidth
-                type="email"
-                label="Description du projet"
-                name="description"
-                variant="filled"
-                size="small"
-                required
-                onChange={handleChange}
-                value={Project.description}
-                multiline
-                rows={4}
-              />
-            </Grid>{" "}
-            <Grid item xs={12} sm={12}>
-              <TextField
-                fullWidth
-                label="Etat Projet"
+                label="Affecter a "
                 name="etat"
                 select
                 variant="filled"
                 size="small"
                 onChange={handleChange}
-                value={Project.etat}
+                value={Task.etat}
                 required
               >
-                {type.map((item) => (
+                {etat?.map((item) => (
                   <MenuItem value={item}>{item}</MenuItem>
                 ))}
               </TextField>
@@ -115,4 +96,4 @@ function ModalEditProject({ popup, handleClose, handleEditProject }) {
   );
 }
 
-export default ModalEditProject;
+export default EditTache;

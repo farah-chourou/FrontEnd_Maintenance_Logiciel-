@@ -64,7 +64,7 @@ export default function Nav({ openNav, onCloseNav }) {
     setNavWidth(270);
   };
 
-  const { setUser, user } = useContext(UserContext);
+  const { user } = useContext(UserContext);
   const renderContent2 = (
     <Scrollbar
       sx={{

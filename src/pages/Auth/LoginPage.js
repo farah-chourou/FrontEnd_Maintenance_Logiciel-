@@ -5,21 +5,17 @@ import {
   IconButton,
   InputAdornment,
   TextField,
-  Checkbox,
   Link,
   Container,
   Typography,
-  Divider,
   Stack,
-  Button,
 } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
-import useResponsive from "../../hooks/useResponsive";
 import Logo from "../../components/logo";
 import Iconify from "../../components/iconify";
-import authService from "src/services/authService";
+import authService from "../../services/authService";
 import { UserContext } from "../../store/Contexts";
-import Toastfunction from "src/utils/ToastFunction";
+import Toastfunction from "../../utils/ToastFunction";
 
 export default function LoginPage() {
   const navigate = useNavigate();
@@ -155,7 +151,8 @@ export default function LoginPage() {
               Connexion
             </LoadingButton>{" "}
           </form>
-          mail : fafa@gmail.com / mot de passe : 123
+          Chef de Projet mail : arij@gmail.com / mot de passe : 123
+          <br /> Devloppeur mail : farah@gmail.com / mot de passe : gxaQhMKy6wb*
         </Container>
       </div>
     </div>

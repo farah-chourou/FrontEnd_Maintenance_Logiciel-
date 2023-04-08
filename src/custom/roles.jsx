@@ -1,7 +1,7 @@
 const roles = {
   ALL: "ALL",
-  ADMIN: "CHEF",
-  DEVELOPER: "DEVELOPER",
+  ADMIN: "CHEF_PROJET",
+  DEVELOPER: "DEVELOPPEUR",
 };
 
 const isAll = () => {
